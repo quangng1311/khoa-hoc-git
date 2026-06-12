@@ -44,7 +44,20 @@ Khung Kiểm Tra Điều Kiện Hoàn Thành (Checklist)
 | 3 | Có tối thiểu **10 commit** có ý nghĩa | ✅ Hoàn thành | Kiểm tra tại mục **Commits** của Repo |
 | 4 | Có tối thiểu **3 branch** thực hành | ✅ Hoàn thành | Nhánh: `main`, `mimic`, `vadir` |
 | 5 | Có tối thiểu **2 pull request** | ✅ Hoàn thành | Kiểm tra tại mục **Pull Requests (Closed)** |
-| 6 | Có ít nhất **1 tình huống Conflict** | ✅ Hoàn thành | Đã xảy ra và xử lý trực tiếp trên file `main.py` |
+| 6 | Có ít nhất **1 tình huống Conflict** | ✅ Hoàn thành | Đã xảy ra và xử lý trực tiếp trên file `mimic` |
 | 7 | Có ít nhất **1 tình huống Rollback/Revert** | ✅ Hoàn thành | Đã thực hành lệnh `git revert HEAD` ở commit cuối |
 | 8 | Nộp ảnh chụp minh chứng Microsoft Learn | ✅ Hoàn thành | (Học viên đính kèm ảnh bên dưới) |
 | 9 | Mentor xác nhận đạt yêu cầu | ⏳ Chờ duyệt | Chờ đánh giá từ Mentor |
+
+## 🔀 Tình huống giải quyết Xung đột (Conflict)
+
+- **Mô tả tình huống:** Xung đột mã nguồn đã xảy ra tại tệp `price_tracker.py` trong quá trình gộp nhánh.
+  - **Trên nhánh `main`:** Một thành viên đã cập nhật dòng chú thích cấu hình với nội dung: `thong_tin_thi_truong = "Giá SSD và RAM đang duy trì ở mức ổn định."`
+  - **Trên nhánh `cap-nhat-gia`:** Cùng lúc đó, tại đúng dòng code này, dữ liệu được cập nhật sát với thực tế hơn: `thong_tin_thi_truong = "Giá SSD và DDR đang tăng giá điên cuồng do thiếu hụt nguồn cung."`
+  - **Lý do báo lỗi:** Khi thực hiện thao tác Merge nhánh `cap-nhat-gia` vào `main`, hệ thống Git báo lỗi **CONFLICT (content)** vì hai luồng thông tin ghi đè lên cùng một vị trí và Git không thể tự quyết định nên giữ nhận định thị trường nào.
+
+- **Cách giải quyết (Sử dụng GUI của Antigravity IDE):**
+  1. Mở tệp `price_tracker.py` đang được báo viền màu đỏ (chứa xung đột) từ tab **Source Control**.
+  2. Giao diện IDE hiển thị rõ hai đoạn code va chạm. Click chọn nút **Accept Incoming Change** (Chấp nhận thay đổi từ nhánh phụ) để giữ lại thông tin cập nhật giá chính xác nhất (giá đang tăng do thiếu hụt).
+  3. Bấm `Ctrl + S` để lưu tệp.
+  4. Trở lại tab Source Control, điền thông điệp: `merge: Giai quyet xung dot thong tin gia thi truong` và nhấn nút **Commit** để xác nhận hoàn tất quá trình gỡ rối.
